@@ -1,5 +1,6 @@
 package com.autel.sdksample.evo2;
 
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.EditText;
@@ -232,5 +233,45 @@ public class Evo2FlyControllerActivity extends FlyControllerActivity {
 
     public void resetRadarInfoListener(View view) {
         mEvoFlyController.setAvoidanceRadarInfoListener(null);
+    }
+
+    public void setLeftControl(View view) {
+        if (mEvoFlyController == null) return;
+        String leftHorValue = ((EditText) findViewById(R.id.left_hor_edit)).getText().toString();
+        String leftVerValue = ((EditText) findViewById(R.id.left_ver_edit)).getText().toString();
+        if (TextUtils.isEmpty(leftHorValue) || TextUtils.isEmpty(leftVerValue)) return;
+        int horizontalValue = Integer.parseInt(leftHorValue);
+        int verticalValue = Integer.parseInt(leftVerValue);
+        mEvoFlyController.setControlLeftStick(horizontalValue, verticalValue, new CallbackWithNoParam() {
+            @Override
+            public void onSuccess() {
+                logOut("setLeftControl onSuccess ");
+            }
+
+            @Override
+            public void onFailure(AutelError autelError) {
+                logOut("setLeftControl onFailure " + autelError.getDescription());
+            }
+        });
+    }
+
+    public void setRightControl(View view) {
+        if (mEvoFlyController == null) return;
+        String rightHorValue = ((EditText) findViewById(R.id.right_hor_edit)).getText().toString();
+        String rightVerValue = ((EditText) findViewById(R.id.right_ver_edit)).getText().toString();
+        if (TextUtils.isEmpty(rightHorValue) || TextUtils.isEmpty(rightVerValue)) return;
+        int horizontalValue = Integer.parseInt(rightHorValue);
+        int verticalValue = Integer.parseInt(rightVerValue);
+        mEvoFlyController.setControlRightStick(horizontalValue, verticalValue, new CallbackWithNoParam() {
+            @Override
+            public void onSuccess() {
+                logOut("setRightControl onSuccess ");
+            }
+
+            @Override
+            public void onFailure(AutelError autelError) {
+                logOut("setRightControl onFailure " + autelError.getDescription());
+            }
+        });
     }
 }

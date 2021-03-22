@@ -67,8 +67,8 @@ dependencies {
     implementation 'io.reactivex.rxjava2:rxandroid:2.0.1'
     testImplementation 'junit:junit:4.12'
     implementation('com.squareup.okhttp3:okhttp:4.7.2')
-    implementation 'com.autel:autel-sdk:2.0.11.82@aar'
-//    api(name: "autel-sdk-2.0.11-evo-release-20210118.061224-12", ext: "aar") {
+    implementation 'com.autel:autel-sdk:2.0.11.83@aar'
+//    api(name: "autel-sdk-release", ext: "aar") {
 //        exclude module: 'okio'
 //        exclude module: 'okhttp'
 //    }
