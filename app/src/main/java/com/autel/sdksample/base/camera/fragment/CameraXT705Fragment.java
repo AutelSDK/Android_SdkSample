@@ -22,8 +22,10 @@ import com.autel.common.camera.CameraProduct;
 import com.autel.common.camera.XT705.XT705CameraInfo;
 import com.autel.common.camera.XT705.XT705ParameterRangeManager;
 import com.autel.common.camera.base.BaseStateInfo;
+import com.autel.common.camera.base.FlashCardInternal;
 import com.autel.common.camera.base.MediaMode;
 import com.autel.common.camera.base.PhotoFormat;
+import com.autel.common.camera.base.SdCardInternal;
 import com.autel.common.camera.media.AntiFlicker;
 import com.autel.common.camera.media.AutoExposureLockState;
 import com.autel.common.camera.media.CameraAperture;
@@ -195,6 +197,38 @@ public class CameraXT705Fragment extends CameraBaseFragment {
 
 
     private void initXT705Click(final View view) {
+        view.findViewById(R.id.getSDCardInfo).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                xt705.getSDCardInfo(new CallbackWithOneParam<SdCardInternal>() {
+                    @Override
+                    public void onSuccess(SdCardInternal state) {
+                        logOut("getSDCardInfo  :" + state.toString());
+                    }
+
+                    @Override
+                    public void onFailure(AutelError error) {
+                        logOut("getSDCardInfo  description  " + error.getDescription());
+                    }
+                });
+            }
+        });
+        view.findViewById(R.id.getFlashCardInfo).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                xt705.getFlashCardInfo(new CallbackWithOneParam<FlashCardInternal>() {
+                    @Override
+                    public void onSuccess(FlashCardInternal state) {
+                        logOut("getFlashCardInfo  :" + state.toString());
+                    }
+
+                    @Override
+                    public void onFailure(AutelError error) {
+                        logOut("getFlashCardInfo  description  " + error.getDescription());
+                    }
+                });
+            }
+        });
         view.findViewById(R.id.formatMMCard).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

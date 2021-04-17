@@ -27,8 +27,10 @@ import com.autel.common.camera.XT706.XT706CameraInfo;
 import com.autel.common.camera.XT706.XT706ParameterRangeManager;
 import com.autel.common.camera.XT706.XT706StateInfo;
 import com.autel.common.camera.base.BaseStateInfo;
+import com.autel.common.camera.base.FlashCardInternal;
 import com.autel.common.camera.base.MediaMode;
 import com.autel.common.camera.base.PhotoFormat;
+import com.autel.common.camera.base.SdCardInternal;
 import com.autel.common.camera.media.AntiFlicker;
 import com.autel.common.camera.media.AutoExposureLockState;
 import com.autel.common.camera.media.CameraISO;
@@ -211,7 +213,38 @@ public class CameraXT709Fragment extends CameraBaseFragment {
 
 
     private void initXT706Click(final View view) {
+        view.findViewById(R.id.getSDCardInfo).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                xt706.getSDCardInfo(new CallbackWithOneParam<SdCardInternal>() {
+                    @Override
+                    public void onSuccess(SdCardInternal state) {
+                        logOut("getSDCardInfo  :" + state.toString());
+                    }
 
+                    @Override
+                    public void onFailure(AutelError error) {
+                        logOut("getSDCardInfo  description  " + error.getDescription());
+                    }
+                });
+            }
+        });
+        view.findViewById(R.id.getFlashCardInfo).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                xt706.getFlashCardInfo(new CallbackWithOneParam<FlashCardInternal>() {
+                    @Override
+                    public void onSuccess(FlashCardInternal state) {
+                        logOut("getFlashCardInfo  :" + state.toString());
+                    }
+
+                    @Override
+                    public void onFailure(AutelError error) {
+                        logOut("getFlashCardInfo  description  " + error.getDescription());
+                    }
+                });
+            }
+        });
         view.findViewById(R.id.formatMMCard).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

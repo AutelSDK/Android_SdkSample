@@ -927,6 +927,23 @@
                 android:text="getSkylinePositionData"
                 android:textAllCaps="false" />
 
+            <Button
+                android:id="@+id/getSDCardInfo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/item_margin_bottom"
+                android:gravity="center"
+                android:text="getSDCardInfo"
+                android:textAllCaps="false" />
+            <Button
+                android:id="@+id/getFlashCardInfo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/item_margin_bottom"
+                android:gravity="center"
+                android:text="getFlashCardInfo"
+                android:textAllCaps="false" />
+
             <!--               set listener                        -->
 
             <LinearLayout

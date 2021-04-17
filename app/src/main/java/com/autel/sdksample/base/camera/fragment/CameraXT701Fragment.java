@@ -22,8 +22,10 @@ import com.autel.common.camera.CameraProduct;
 import com.autel.common.camera.XT701.XT701CameraInfo;
 import com.autel.common.camera.XT701.XT701ParameterRangeManager;
 import com.autel.common.camera.base.BaseStateInfo;
+import com.autel.common.camera.base.FlashCardInternal;
 import com.autel.common.camera.base.MediaMode;
 import com.autel.common.camera.base.PhotoFormat;
+import com.autel.common.camera.base.SdCardInternal;
 import com.autel.common.camera.media.AntiFlicker;
 import com.autel.common.camera.media.AutoExposureLockState;
 import com.autel.common.camera.media.CameraISO;
@@ -124,7 +126,7 @@ public class CameraXT701Fragment extends CameraBaseFragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        final View view = inflater.inflate(R.layout.activity_camera_xb015, null);
+        final View view = inflater.inflate(R.layout.activity_camera_xt701, null);
         xt701 = (AutelXT701) ((CameraActivity) getActivity()).getCurrentCamera();
         rangeManager = xt701.getParameterRangeManager();
         logOut("");
@@ -193,6 +195,38 @@ public class CameraXT701Fragment extends CameraBaseFragment {
 
 
     private void initXT701Click(final View view) {
+        view.findViewById(R.id.getSDCardInfo).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                xt701.getSDCardInfo(new CallbackWithOneParam<SdCardInternal>() {
+                    @Override
+                    public void onSuccess(SdCardInternal state) {
+                        logOut("getSDCardInfo  :" + state.toString());
+                    }
+
+                    @Override
+                    public void onFailure(AutelError error) {
+                        logOut("getSDCardInfo  description  " + error.getDescription());
+                    }
+                });
+            }
+        });
+        view.findViewById(R.id.getFlashCardInfo).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                xt701.getFlashCardInfo(new CallbackWithOneParam<FlashCardInternal>() {
+                    @Override
+                    public void onSuccess(FlashCardInternal state) {
+                        logOut("getFlashCardInfo  :" + state.toString());
+                    }
+
+                    @Override
+                    public void onFailure(AutelError error) {
+                        logOut("getFlashCardInfo  description  " + error.getDescription());
+                    }
+                });
+            }
+        });
         view.findViewById(R.id.getStateInfo).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
