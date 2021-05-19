@@ -104,5 +104,11 @@ public class DFLayout {
                 mContext.startActivity(new Intent(mContext,SerialAidlActivity.class));
             }
         });
+        mLayout.findViewById(R.id.tvPush).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mContext.startActivity(new Intent(mContext, LivePushActivity.class));
+            }
+        });
     }
 }
