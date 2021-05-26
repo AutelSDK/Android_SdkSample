@@ -39,7 +39,7 @@ public class DFLayout {
         mLayout.findViewById(R.id.fcTest).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                mContext.startActivity(new Intent(mContext, Evo2FlyControllerActivity.class));
+                mContext.startActivity(new Intent(mContext, DFFlyControllerActivity.class));
             }
         });
         mLayout.findViewById(R.id.cameraTest).setOnClickListener(new View.OnClickListener() {

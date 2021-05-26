@@ -40,7 +40,7 @@
             </intent-filter>
         </activity> <!-- <activity android:name=".evo.G2RemoteControllerActivity" /> -->
         <!-- <activity android:name=".evo.G2FlyControllerActivity" /> -->
-        <!-- <activity android:name=".evo2.Evo2FlyControllerActivity" /> -->
+         <activity android:name=".dragonfish.DFFlyControllerActivity" />
         <!-- <activity android:name=".evo2.Evo2BatteryActivity" /> -->
         <!-- <activity android:name=".evo2.Evo2GimbalActivity" /> -->
         <!-- <activity android:name=".evo2.Evo2DspActivity" /> -->
